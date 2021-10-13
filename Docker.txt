@@ -1,0 +1,65 @@
+==> To install docker:
+$ sudo apt install docker.io
+
+
+==> To find the version of docker:
+$ sudo docker version
+
+
+==> To get the list of all images:
+$ sudo docker images
+
+
+
+
+***************************************************************************************************
+                                        IMAGES
+***************************************************************************************************
+
+==> To download an image:
+$ sudo docker pull hello-docker
+
+
+==> To delete an image:
+$ sudo docker rmi hello-docker
+
+
+
+
+***************************************************************************************************
+                                        CONTAINER
+***************************************************************************************************
+
+==> To get the list of all containers:
+$ sudo docker ps -a
+
+
+==> To start a container from an image (e.g. image name = nginx):
+$ sudo docker run --name mycontainer nginx              // this will first pull the image if not present locally
+
+
+==> To start a container in detached mode (this runs a web server in background and we will back to the prompt):
+$ sudo docker run -d kodekloud/simple-webapp
+
+          
+==> To start an existing container:
+$ sudo docker start -ai 8aa07c50e260          // provide either container_id or name of the container
+$ sudo docker start 8aa07c50e260
+
+==> To stop a running container:
+$ sudo docker stop dd5673adf044           // provide either container_id or name of the container
+
+
+==> To delete a container:
+$ sudo docker rm dd5673adf044           // provide either container_id or name of the container
+
+
+==> To execute a command in container while starting it:
+$ sudo docker run ubuntu sleep 10
+
+
+==> To execute a command in a running container:
+$ sudo docker exec -it mycontainer ls /etc                  // mycontainer is the container name
+
+
+

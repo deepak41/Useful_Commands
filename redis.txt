@@ -1,0 +1,32 @@
+==> To get redis metrics:
+$ redis-cli
+127.0.0.1:6379> info
+127.0.0.1:6379> info memory        // for getting only memory section
+
+
+==> To set a value:
+> set foo 100
+
+
+==> To get a value:
+> get foo
+
+
+==> To check if a value exists:
+> exists foo
+
+
+==> To delete a value:
+> del foo
+
+
+==> To delete all values:
+> flushall
+
+
+==> To set expiration time along with value:
+> setex foo 30 "hello"          // 30 sec
+
+
+==> To check time left for expiration:
+> ttl foo

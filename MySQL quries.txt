@@ -1,0 +1,46 @@
+1. To get the list of users
+# SELECT User FROM mysql.user;
+
+2. To get the current user
+# SELECT USER();
+
+or
+
+# SELECT CURRENT_USER();  
+
+3. To get the list of databases
+# show databases;
+
+4. To get the current working database
+# SELECT DATABASE();
+
+5.To create a database
+# create database messi;
+
+6.To delete a database
+# DROP DATABASE messi;
+
+7.To enter a database
+# use messi;
+
+************************************************************************
+
+=> To see the list of tables in a db
+# show tables;
+
+=> To insert values in a table
+# INSERT INTO emp (firstname,lastname,email) VALUES("Kartik","Ambani","xyz@abc.com");
+
+=> To delete a row from a table
+# DELETE FROM emp WHERE uid=6 ;
+
+=> To delete a table
+# drop table emp;
+
+=> To replace a value:
+# UPDATE posts
+  SET region = REPLACE(region, 'EUROPE', 'europe')
+  WHERE region= "EUROPE";
+
+=> To add a new column:
+# ALTER TABLE emp ADD newcolumnname VARCHAR( 255 ) after a_column;

@@ -1,0 +1,29 @@
+:not()
+
+background-color     //sets the background color inside border
+color      //font color
+
+font-size
+font-family     //font name
+font-weight     //makes text bold,light..
+font-style     //italic, regular
+
+text-decoration
+text-align
+
+line-height
+background-image
+
+a:link
+a:hover
+a:visited
+
+list-style-type
+
+border-style
+border-color
+border-width
+border-radius     // for making rounded corners for the element
+
+:last-child
+overflow

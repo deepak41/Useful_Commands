@@ -1,0 +1,114 @@
+zipalign -f -v 4 thingsai.apk outfile.apk
+
+==> To shutdown the computer:
+$ sudo poweroff
+$ sudo poweroff -f
+
+==> To restart the computer:
+$ sudo reboot
+
+==> To find ip address of my pc
+$ hostname -I
+$ ifconfig | grep inet
+
+
+/***************************************************************/
+/***************************************************************/
+
+==> To compile and run c file:
+$ gcc test.c -o test	//compile
+$ ./test				//run
+
+/***************************************************************/
+/***************************************************************/
+
+
+/***************************************************************/
+
+==> To empty the file hello.txt
+$ echo "" > hello.txt
+
+
+/***************************************************************/
+
+==> To list the process running on a port(e.g 8080)
+$ lsof -i :8080    (use sudo for 443)
+
+==> To kill a process with PID(process ID) 1448
+$ kill -9 1448
+
+==> To see the list of all the running processes:
+$ ps -aux | less
+$ top 
+
+/***************************************************************/
+
+
+==> To install zip unzip
+$ sudo apt-get install zip unzip
+
+==> To extract a zip file
+$ unzip test.zip
+$ zip -r compressed_filename.zip foldername
+
+
+
+/******************************************/
+			      SCP
+/******************************************/
+
+
+commands can be entered in local machine or cloud server
+
+
+==> to copy a file to remote server(command)
+$ scp test.zip root@202.33.58.47:/My_contents
+// The system into which file is copied can only be cloud server (not local machine).
+$ scp -i "UM1.pem" ~/My_files/gulptest.zip ubuntu@ec2-13-233-184-78.ap-south-1.compute.amazonaws.com:~/projects
+
+
+==> to copy a file from a remote server to local machine
+$ scp root@139.59.80.248:/My_contents/test.zip ~/MY_CONTENTS
+// The system from which file is copied can only be cloud server (not local machine).
+$ scp -i "UM1.pem" ubuntu@ec2-13-127-50-91.ap-south-1.compute.amazonaws.com:~/thingsioportal.zip ~/My_files
+
+/*************************************************************************************/
+
+
+
+
+/******************************************/
+			FOLDERS / DIRECTORIES
+/******************************************/
+
+==> To move all the contents of the current folder to the folder /home/deepak/xyz
+$ mv * /home/deepak/xyz    (to copy replace mv with cp)
+
+==> rename a folder
+$ mv oldname newname
+
+==> To delete a folder called mydir
+$ rm -r mydir
+
+==> To copy a file to a folder
+$ cp /var/test.zip /var/www/songs/
+
+==> To copy a folder named songs
+$ cp -R songs/ /var/www/songs/
+
+==> to copy the contents of the folder folder1 to folder2
+$ cp -r ~/folder1/. ~/folder2
+
+
+==> to delete all the contents of the folder named cars
+$ rm -rf cars/*
+
+
+/*************************************************************************************/
+
+
+
+==> To see live error logs:
+$ sudo tail -f /var/log/apache2/error.log
+
+/*************************************************************************************/

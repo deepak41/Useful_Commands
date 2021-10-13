@@ -1,0 +1,43 @@
+A json object consists of curly brackets {} and key-value pairs(separated by comma) inside it.
+
+SYNTAX:
+# Key must be a string. Ex: "car", "Age" etc.
+# Value can be numbers, strings, boolean, null, array i.e [] and object i.e. {}.
+
+------------------------------------------------------------
+
+Examples:
+1. {"id":1,"content":"Hello, World!"}
+
+2.  {
+		"book": [
+			{
+				"id":"01",
+				"language": "Java",
+				"edition": "third",
+				"author": "Herbert Schildt"
+			},
+			{
+				"id":"07",
+				"language": "C++",
+				"edition": "second",
+				"author": "E.Balagurusamy"
+			}
+		]
+    }
+
+------------------------------------------------------------
+
+==> Accesing Values:
+	
+	var data = {
+	    "id": 1,
+	    "name": "abc",
+	    "address": {
+	        "streetName": "cde",
+	        "streetId": 2
+	    }
+	}
+
+	# data.address.streetName;              // (1) dot notation
+	# data["address"]["streetName"];        // (2) array notation

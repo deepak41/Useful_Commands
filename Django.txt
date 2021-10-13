@@ -1,0 +1,52 @@
+==> To install Django:
+# pip install django==1.9
+
+
+==> To check the version of installed django package:
+# django-admin --version
+
+
+==> To create a new django project(e.g. mysite):
+# django-admin startproject mysite
+
+OR if you want manage.py to be in pwd:
+# django-admin startproject mysite .
+
+
+==>
+# python manage.py migrate
+
+
+==>
+# python manage.py runserver
+
+
+==> To create a new app(e.g. blog)
+# python manage.py startapp blog
+
+
+==> To add a newly created model(in blog app) to the database:
+# python manage.py makemigrations blog
+# python manage.py migrate blog
+
+
+==> To reset Django admin password:
+1. Open shell:
+# python manage.py shell
+
+2. Get the list of superusers:
+>>> from django.contrib.auth.models import User
+>>> User.objects.filter(is_superuser=True)
+
+3. After getting the name of required superuser(e.g. messi) exit shell and:
+# manage.py changepassword messi
+
+
+
+
+
+
+
+
+
+

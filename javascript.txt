@@ -1,0 +1,1 @@
+# functions can be called in .js file or .html file

@@ -1,0 +1,13 @@
+==> STARTING AND STOPPING BITNAMI DREAMFACTORY STACK
+
+To start/stop/restart application on Linux you can use the included ctlscript.sh
+utility, as shown below:
+
+Go to /opt/dreamfactory-2.2.1-2 folder and:
+
+$ ./ctlscript.sh (start|stop|restart)
+
+  start      - start the service(s)
+  stop       - stop  the service(s)
+  restart    - restart or start the service(s)
+  status

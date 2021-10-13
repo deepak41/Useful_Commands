@@ -1,0 +1,132 @@
+==> Install git:
+$ sudo apt-get install git
+
+
+==>  After installing git, the first thing to do:
+$ git config --global user.name "Your Name"
+$ git config --global user.email "you@example.com"
+
+
+==> To see the user.name or user.email:
+$ git config user.name
+$ git config user.email
+
+*********************************
+*********************************
+
+
+==> To make a folder a git repo, go to that folder and:
+$ git init
+
+
+==> To download a online git repo:
+$ git clone https://deepak5@bitbucket.org/thethingscloud/machine-learning.git
+
+
+*********************************
+*********************************
+
+==> To see the list of remote repo
+$ git remote -v
+
+
+==> To add a remote repo for the local repo:
+$ git remote add <name> <url>
+
+
+==> To remove a remote repo for the local repo:
+$ git remote rm <name>
+
+
+
+************************************
+************************************
+
+
+==> After making changes in the local repo, to save changes:
+$ git status
+$ git add -A .       (-A stands for all i.e created, deleted & modified)
+$ git commit -m "some message"
+
+
+
+**************************************************************
+						GIT-IGNORE
+**************************************************************
+
+First commit any outstanding code changes.
+
+Then:
+$ git rm -r --cached .
+$ git add .
+$ git commit -m ".gitignore is now working"
+
+
+***************************************************************
+**************************************************************
+
++++++  BRANCH  ++++++
+
+
+==> To see the list of branches in local repo:
+$ git branch
+
+
+==> To create a new local branch(named messi):
+$ git branch messi
+
+
+==> To delete a local branch(messi):
+$ git branch -D messi
+
+
+==> To delete a remote(figo) branch(messi):
+$ git push figo --delete messi
+OR
+$ git push figo :messi
+
+
+==> To switch to a branch(messi):
+$ git checkout messi
+
+
+==> To pull(download) a new remote branch(messi):
+$ git checkout -b messi origin/messi
+
+
+****************************
+*****************************
+
+==> To merge a branch(messi) to another branch(proton), first switch to proton and:
+$ git merge messi
+
+
+****************************
+*******************************
+
+==> To upload changes to remote repo(named figo):
+$ git push figo             (pushes the current branch to the remote branch with the same name)
+$ git push figo messi       (pushes messi branch to the remote messi branch)
+$ git push                  (same as "git push origin", origin is remote repo name)
+
+
+******************************
+********************************
+
+==> To see the list of remote tracking branches:
+$ git branch -r
+
+==> To fetch from remote repo(figo) to update remote tracking branches:
+$ git fetch figo
+
+==> To merge a branch(messi) into another branch(proton), first switch to proton and:
+$ git merge messi
+
+
+
+************************************
+*********************************
+
+==> To merge the remote branch messi into the current local branch:
+$ git fetch figo
+$ git pull figo messi     (pull = fetch + merge)

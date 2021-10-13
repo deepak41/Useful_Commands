@@ -1,0 +1,170 @@
+/**********************************************************************************************/
+						INSTALL
+/**********************************************************************************************/
+
+===> Steps
+
+$ curl -fsSL https://www.mongodb.org/static/pgp/server-3.4.asc | sudo apt-key add -
+
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+$ sudo apt update
+
+$ sudo apt install mongodb-org
+
+$ sudo systemctl start mongod.service
+
+$ sudo systemctl status mongod
+
+$ sudo systemctl enable mongod
+
+$ mongo
+
+/**************************************************************************************************/
+
+
+==> To find the version of mongodb:
+$ db.version()
+
+
+==> To make a copy(dump) all the data of all dbs:
+$ mongodump			 //you should be inside the folder in which you want dump
+
+==> To restore data in the db(myfirstbackup is the dump folder):
+$ mongorestore myfirstbackup 
+
+
+
+/**********************************************************************************************/
+						DATABASE
+/**********************************************************************************************/
+==> To see the list of databases:
+$ show dbs
+
+==> To create a database or switch to a database(named messi):
+$ use messi
+
+==> To check current working database:
+$ db
+
+==> To delete a database:
+$ db.dropDatabase()
+
+/**********************************************************************************************/
+/**********************************************************************************************/
+
+
+
+/**********************************************************************************************/
+						COLLECTIONS
+/**********************************************************************************************/
+
+==> To see the list of collections in database:
+$ show collections
+
+==> To see the content of a collection(named messi):
+$ db.messi.find()
+
+==> To delete a collection(named messi):
+$ db.messi.drop()
+
+==> To create a collection & insert a document in a collection(named messi):
+$ db.messi.insert(
+	{
+		"id":30,
+		"name":"john"
+	}
+  )								// if the collection messi is not present, first it will be created
+
+OR to insert multiple documents:
+
+$ db.messi.insert([
+	{
+		"id":30,
+		"name":"john"
+	},
+	{
+		"id":3467,
+		"name":"david"
+	},
+	{
+		"id":98,
+		"name":"phil"
+	}
+  ])
+
+
+==> To remove a document from a collection(named messi):
+$ db.messi.remove(
+	{"id":30}
+)
+
+$ db.test_users.remove( {"_id": ObjectId("4d512b45cc9374271b02ec4f")});	
+
+==> To update a document from a collection(named messi):
+$ db.messi.update(
+	{"id":4545},
+	{
+		"id":4545,
+		"name":"phil",
+		key:value,
+		key:value
+	}
+  )
+
+***************************
+
+==> To search for records from a collection(named messi) having a particular criteria(key-value pair):
+$ db.messi.find(
+	{"key":"value"}
+)
+
+tutorialspoint.com
+
+****************************
+
+/**********************************************************************************************/
+/**********************************************************************************************/
+
+
+
+
+/**********************************************************************************************/
+										ADMIN
+/**********************************************************************************************/
+
+==> To login as admin user(named root):
+$ mongo admin -u root -p things1234
+
+
+==> To login as normal user(named owner1):
+$ mongo --port 27017 -u "owner1" -p "things1234" --authenticationDatabase "testdb1"
+
+==> To switch users inside mongo shell:
+$ db.auth("root", "things1234")
+
+
+==> Commands to control Mongodb:
+$ sudo service mongod start        			(To start the MongoDB Service)
+$ sudo service mongod stop         			(To shutdown MongoDB)
+$ sudo service mongod restart         		(To restart MongoDB)
+$ sudo service mongod status         		(To check MongoDB Service status)
+
+
+==> To create a user:
+$ db.createUser({ user: "root", pwd: "things1234", roles: [{ role: "root", db: "admin" }] })
+$ db.createUser({ user: "owner1", pwd: "things1234", roles: [{ role: "dbOwner", db: "testdb1" }] })
+
+
+==> To get all users:
+$ db.getUsers()
+
+==> To delete a user:
+$ db.dropUser('user1')
+
+
+
+/**********************************************************************************************/
+/**********************************************************************************************/
+
+

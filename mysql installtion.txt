@@ -1,0 +1,34 @@
+mysqld --install
+mysqld --initialize
+
+Stop the MySQL process
+# service mysqld stop
+
+Once MySQL has stopped, restart it with the --skip-grant-tables option
+# mysqld_safe --skip-grant-tables &
+or edit your /etc/my.cnf file to add the line
+skip-grant-tables
+
+Connect to MySQL using the root user.
+mysql -u root
+
+Once logged in, you should see the following prompt:
+mysql>
+Enter the following commands:
+mysql> use mysql;
+mysql> UPDATE user SET password=PASSWORD("YOUR NEW PASSWORD HERE") WHERE User='root';
+mysql> flush privileges;
+mysql> quit
+
+Now stop MySQL again:
+# service mysqld stop
+
+If you edited your /etc/my.cnf file, delelete the skip-grant-tables line.
+
+Now restart MySQL and test your new login.
+# service mysqld restart
+# mysql -u root -p
+
+ERROR: Mysql password expired. Can't connect
+Connection failed: Your password has expired. To log in you must change it using a client that supports expired passwords.
+SOLUTION: SET PASSWORD = PASSWORD('xxxxxxxx');

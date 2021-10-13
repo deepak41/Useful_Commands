@@ -1,0 +1,21 @@
+==> To install virtual environment:
+% pip2 install virtualenv     (for python 2)
+% pip3 install virtualenv     (for python 3)
+
+
+==> To create virtual env(named configdash), first go to the folder where env is to be created and:
+% virtualenv --python=c:\Python27\python.exe configdash
+% virtualenv --python=python3.4 myvenv     (in pythonanywhere.com)
+
+
+==> To activate virtual env:
+% source configdash/bin/activate     (in linux)
+% configdash\Scripts\activate.bat    (in windows)
+
+
+==> To deactivate virtual env:
+% deactivate
+
+
+==> To see the list of python packages installed:
+% pip freeze

@@ -1,0 +1,51 @@
+==> To check the version of maven:
+% 
+
+*********************************
+*********************************
+
+==> To clean the project:
+[Eclipse]
+Right click project -> Run As -> Maven Build -> [(Goals = clean) -> Run]
+
+[cmd line](go to the directory in which pom.xml is present)
+% mvn clean
+
+
+
+==> To compile the source files:
+[Eclipse]
+Right click project -> Run As -> Maven Build... -> [(Goals = compile) -> Run]
+
+[cmd line]
+% mvn compile
+
+
+
+==> To compile the test files:
+[Eclipse]
+Right click project -> Run As -> Maven Build... -> [(Goals = test-compile) -> Run]
+
+[cmd line]
+% mvn test-compile
+
+
+
+==> To run the test:
+[Eclipse]
+Right click project -> Run As -> Maven Build... -> [(Goals = test) -> Run]
+
+[cmd line]
+% mvn test
+
+
+
+==> To create the jar file:
+[Eclipse]
+Right click project -> Run As -> Maven Build... -> [(Goals = install) -> Run]
+
+[cmd line]
+% mvn install
+
+****************************
+*********************************

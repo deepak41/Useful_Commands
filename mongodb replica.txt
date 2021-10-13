@@ -1,0 +1,224 @@
+1. To set the hostname, ssh into each instance and make changes to /etc/hostname file:
+
+$ ssh into_11.11.11.11_then 
+$ sudo nano /etc/hostname
+11.11.11.11
+
+$ ssh into_22.22.22.22_then 
+$ sudo nano /etc/hostname
+22.22.22.22
+
+$ ssh into_33.33.33.33_then 
+$ sudo nano /etc/hostname
+33.33.33.33
+
+
+
+2. After changing in the hostname file you need to reboot the instances:
+$ sudo reboot
+
+
+
+3. Now, install mongodb in each instance. To do that:
+
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb.list
+
+$ sudo apt-get update
+
+$ sudo apt-get install mongodb-org=3.4.19 mongodb-org-server=3.4.19 mongodb-org-shell=3.4.19 mongodb-org-mongos=3.4.19 mongodb-org-tools=3.4.19
+
+$ sudo systemctl start mongod
+
+$ sudo systemctl enable mongod
+
+
+
+4. Generate a Key file:
+
+// ssh into_11.11.11.11_then 
+$ openssl rand -base64 756 > mongo-keyfile
+
+// Send mongo-keyfile to other two servers:
+$ sudo scp -i "pem_file/UM1.pem" mongo-keyfile ubuntu@ec2-22-22-22-22.ap-south-1.compute.amazonaws.com:~
+$ sudo scp -i "pem_file/UM1.pem" mongo-keyfile ubuntu@ec2-33-33-33-33.ap-south-1.compute.amazonaws.com:~
+
+// Then on each server:
+$ sudo mkdir /opt/mongo
+$ sudo mv ~/mongo-keyfile /opt/mongo
+$ sudo chmod 400 /opt/mongo/mongo-keyfile
+$ sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+
+
+
+5. Open /etc/mongod.conf on each instances and do the following changes:
+
+$ sudo nano /etc/mongod.conf
+
+security:
+  keyFile: /opt/mongo/mongo-keyfile
+
+net:
+  bindIp: 0.0.0.0
+
+replication:
+  replSetName: rsthingsai
+
+// then on each server
+$ sudo systemctl restart mongod
+
+
+
+6. On 11.11.11.11, create admin user
+
+$ mongo 
+> rs.initiate()
+PRIMARY> use admin;
+PRIMARY>  db.createUser({ user: "adminUser", pwd:"things123", roles: [  {role: "userAdminAnyDatabase", db: "admin" }, { role: "dbAdminAnyDatabase", db: "admin" },  { role: "readWriteAnyDatabase", db:"admin" },  { role: "clusterAdmin",  db: "admin" }]});
+
+
+
+7. In 11.11.11.11 node, login in mongo with adminUser and add other nodes:
+
+$ mongo -u adminUser -p --authenticationDatabase admin
+PRIMARY> rs.add('22.22.22.22:27017');
+PRIMARY> rs.add('33.33.33.33:27017');
+
+PRIMARY> use exampleDB
+PRIMARY> for(var i = 0; i <= 10; i++) db.exampleCollection.insert({x : i})
+
+// ssh into_22.22.22.22
+$ mongo -u adminUser -p --authenticationDatabase admin
+rs0:SECONDARY> rs.slaveOk()
+rs0:SECONDARY> use exampleDB
+rs0:SECONDARY> db.exampleCollection.find()
+
+
+
+8. Create a simple user:
+
+// ssh into_primary
+$ mongo -u adminUser -p --authenticationDatabase admin
+> use admin
+> db.createRole(
+   {
+     role: "userExampledb",
+     privileges: [
+       { resource: { db: "exampleDB", collection: "" }, actions: [ "find", "update", "insert", "remove" ] },
+     ],
+     roles: [
+       { role: "read", db: "admin" }
+     ]
+   }
+)
+
+> db.createUser(
+  {
+    user: "tcDev",
+    pwd: "things123",
+    roles: [ 'userExampledb']
+  }
+)
+
+
+
+9. Connect in node js via mongoose:
+nconf.set('database', 'mongodb://john:password@11.11.11.11:27017,22.22.22.22:27017,33.33.33.33:27017/exampleDB?authSource=admin&replicaSet=rsthingsai');
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+To add a new replica member:
+
+1. To set the hostname, ssh into the instance and make changes to /etc/hostname file:
+
+$ ssh into_44.44.44.44_then 
+$ sudo nano /etc/hostname
+44.44.44.44
+
+
+
+2. After changing in the hosts file you need to reboot the instance:
+$ sudo reboot
+
+
+
+3. Now, install mongodb in the instance. To do that:
+
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb.list
+
+$ sudo apt-get update
+
+$ sudo apt-get install mongodb-org=3.4.19 mongodb-org-server=3.4.19 mongodb-org-shell=3.4.19 mongodb-org-mongos=3.4.19 mongodb-org-tools=3.4.19
+
+$ sudo systemctl start mongod
+
+$ sudo systemctl enable mongod
+
+
+
+4. Send the Key file:
+$ ssh into_11.11.11.11_then 
+$ sudo scp -i "pem_file/UM1.pem" /opt/mongo/mongo-keyfile ubuntu@ec2-44-44-44-44.ap-south-1.compute.amazonaws.com:~
+
+[ 
+	If pem file not present then:
+	$ scp -i "UM1.pem" pem_file.zip ubuntu@ec2-11-11-11-11.ap-south-1.compute.amazonaws.com:~
+]
+
+// Then on 44.44.44.44:
+$ sudo mkdir /opt/mongo
+$ sudo mv ~/mongo-keyfile /opt/mongo
+$ sudo chmod 400 /opt/mongo/mongo-keyfile
+$ sudo chown mongodb:mongodb /opt/mongo/mongo-keyfile
+
+
+
+5. Open /etc/mongod.conf on 44.44.44.44 and do the following changes:
+
+$ sudo nano /etc/mongod.conf
+
+security:
+  keyFile: /opt/mongo/mongo-keyfile
+
+net:
+  port: 27017
+  bindIp: 0.0.0.0
+
+replication:
+  replSetName: rsthingsai
+
+// then on 44.44.44.44:
+$ sudo systemctl restart mongod
+
+
+
+6. Then from primary server:
+$ mongo -u adminUser -p --authenticationDatabase admin
+> rs.add('44.44.44.44:27017');
+> rs.status()
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+If due to some error, only one member is working and it is showing as SECONDARY:
+
+1. ssh into that instance and:
+
+$  mongo admin -u adminUser -p things123
+> cfg = rs.conf()
+> printjson(cfg)
+Check the position of this member in the members array (e.g position is 1)
+> cfg.members = [cfg.members[1]]
+> rs.reconfig(cfg, {force : true})
+
+
+
