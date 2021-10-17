@@ -6,8 +6,6 @@ $ sudo apt install docker.io
 $ sudo docker version
 
 
-==> To get the list of all images:
-$ sudo docker images
 
 
 
@@ -15,6 +13,10 @@ $ sudo docker images
 ***************************************************************************************************
                                         IMAGES
 ***************************************************************************************************
+
+==> To get the list of all images:
+$ sudo docker images
+
 
 ==> To download an image:
 $ sudo docker pull hello-docker
@@ -34,23 +36,25 @@ $ sudo docker rmi hello-docker
 $ sudo docker ps -a
 
 
-==> To start a container from an image (e.g. image name = nginx):
+==> To START/RUN a container from an image (e.g. image name = nginx):
 $ sudo docker run --name mycontainer nginx              // this will first pull the image if not present locally
+$ sudo docker run -p 45045:8080 -d deepak661/nodejs-app
 
 
-==> To start a container in detached mode (this runs a web server in background and we will back to the prompt):
+==> To START/RUN a container in detached mode (this runs a web server in background and we will back to the prompt):
 $ sudo docker run -d kodekloud/simple-webapp
 
           
-==> To start an existing container:
+==> To START/RUN an existing container:
 $ sudo docker start -ai 8aa07c50e260          // provide either container_id or name of the container
 $ sudo docker start 8aa07c50e260
 
-==> To stop a running container:
+
+==> To STOP a running container:
 $ sudo docker stop dd5673adf044           // provide either container_id or name of the container
 
 
-==> To delete a container:
+==> To DELETE a container:
 $ sudo docker rm dd5673adf044           // provide either container_id or name of the container
 
 
@@ -59,7 +63,16 @@ $ sudo docker run ubuntu sleep 10
 
 
 ==> To execute a command in a running container:
-$ sudo docker exec -it mycontainer ls /etc                  // mycontainer is the container name
+$ sudo docker exec -it mycontainer ls /etc           // mycontainer is the container name, -t is pseudo terminal
 
 
+==> To get all the details of a container:
+$ sudo docker inspect 5390f465862b
 
+
+==> To find internal IP address of a container:
+$ sudo docker inspect -f '{{ .NetworkSettings.IPAddress }}' 0a626ce14db4
+
+
+==> To see the logs of a container:
+$ sudo docker logs a1f0ba759d32
