@@ -9,7 +9,7 @@ $ sudo npm install -g nodemon
 
 
 ==> To create a new project, create and go to a folder and:
-$ npm init
+$ npm init -y
 
 
 

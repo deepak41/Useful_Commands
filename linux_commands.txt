@@ -25,20 +25,21 @@ $ ./test				//run
 
 /***************************************************************/
 
-==> To empty the file hello.txt
+==> To EMPTY the file hello.txt
 $ echo "" > hello.txt
+$ cp /dev/null hello.txt
 
 
 /***************************************************************/
 
 ==> To list the process running on a port(e.g 8080)
-$ lsof -i :8080    (use sudo for 443)
+$ sudo lsof -i :8080 
 
 ==> To kill a process with PID(process ID) 1448
 $ kill -9 1448
 
 ==> To see the list of all the running processes:
-$ ps -aux | less
+$ ps -aux | less     (for exit: ctrl+z)
 $ top 
 
 /***************************************************************/
