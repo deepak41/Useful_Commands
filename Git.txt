@@ -1,5 +1,6 @@
 ==> Install git:
 $ sudo apt-get install git
+$ git --version
 
 
 ==>  After installing git, the first thing to do:
@@ -11,9 +12,14 @@ $ git config --global user.email "you@example.com"
 $ git config user.name
 $ git config user.email
 
-*********************************
-*********************************
+==> To push local branches to the remote branches that already exist with the same name
+$ git config --global push.default matching
 
+
+
+*********************************
+       INITITIALIZE
+*********************************
 
 ==> To make a folder a git repo, go to that folder and:
 $ git init
@@ -40,18 +46,18 @@ $ git remote rm <name>
 
 
 ************************************
+		COMMIT
 ************************************
-
 
 ==> After making changes in the local repo, to save changes:
 $ git status
-$ git add -A .       (-A stands for all i.e created, deleted & modified)
+$ git add -A .         // -A stands for all i.e created, deleted & modified
 $ git commit -m "some message"
 
 
 
 SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-						GIT-IGNORE
+			GIT-IGNORE
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 First commit any outstanding code changes.
@@ -86,27 +92,27 @@ OR
 $ git push figo :messi
 
 
-==> To switch to a branch(messi):
-$ git checkout messi
+==> To switch to a branch(branch1):
+$ git checkout branch1
 
 
-==> To pull(download) a new remote branch(messi):
-$ git checkout -b messi origin/messi
+==> To PULL(DOWNLOAD) a new remote branch(branch1):
+$ git fetch && git checkout branch1
 
 
 ****************************
 *****************************
 
-==> To merge a branch(messi) to another branch(proton), first switch to proton and:
-$ git merge messi
+==> To merge a branch(branch1) to another branch(branch2), first switch to branch2 and:
+$ git merge branch1
 
 
 ****************************
 *******************************
 
 ==> To upload changes to remote repo(named figo):
-$ git push figo             (pushes the current branch to the remote branch with the same name)
-$ git push figo messi       (pushes messi branch to the remote messi branch)
+$ git push figo             (pushes the current local branch to the remote branch with the same name)
+$ git push figo branch1       (pushes 'branch1' branch to the remote 'branch1' branch)
 $ git push                  (same as "git push origin", origin is remote repo name)
 
 

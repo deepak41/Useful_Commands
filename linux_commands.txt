@@ -32,8 +32,8 @@ $ cp /dev/null hello.txt
 
 /***************************************************************/
 
-==> To list the process running on a port(e.g 8080)
-$ sudo lsof -i :8080 
+==> To list the process running on a port(e.g 3000)
+$ sudo lsof -i :3000
 
 ==> To kill a process with PID(process ID) 1448
 $ kill -9 1448

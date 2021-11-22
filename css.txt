@@ -1,4 +1,10 @@
 :not()
+/* Selects any element that is NOT a paragraph */
+:not(p) {
+  color: blue;
+}
+
+
 
 background-color     //sets the background color inside border
 color      //font color

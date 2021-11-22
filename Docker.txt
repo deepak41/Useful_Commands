@@ -6,6 +6,9 @@ $ sudo apt install docker.io
 $ sudo docker version
 
 
+==> To avoid using sudo in all commands:
+$ sudo chmod 777 /var/run/docker.sock
+
 
 
 
@@ -15,15 +18,17 @@ $ sudo docker version
 ***************************************************************************************************
 
 ==> To get the list of all images:
-$ sudo docker images
+$ docker images
+$ docker image ls
 
 
 ==> To download an image:
-$ sudo docker pull hello-docker
+$ docker pull hello-docker
 
 
-==> To delete an image:
-$ sudo docker rmi hello-docker
+==> To DELETE an image:
+$ docker rmi hello-docker
+$ docker rmi -f $(docker images -aq)    // Delete all images
 
 
 
@@ -33,46 +38,50 @@ $ sudo docker rmi hello-docker
 ***************************************************************************************************
 
 ==> To get the list of all containers:
-$ sudo docker ps -a
+$ docker ps -a
+$ docker container ls -a
 
 
 ==> To START/RUN a container from an image (e.g. image name = nginx):
-$ sudo docker run --name mycontainer nginx              // this will first pull the image if not present locally
-$ sudo docker run -p 45045:8080 -d deepak661/nodejs-app
+$ docker run --name mycontainer nginx              // this will first pull the image if not present locally
+$ docker run -p 45045:8080 -d deepak661/nodejs-app
+
+
+==> To START/RUN an existing container:
+$ docker start -ai 8aa07c50e260          // provide either container_id or name of the container
+$ docker start 8aa07c50e260
 
 
 ==> To START/RUN a container in detached mode (this runs a web server in background and we will back to the prompt):
-$ sudo docker run -d kodekloud/simple-webapp
+$ docker run -d kodekloud/simple-webapp
 
           
-==> To START/RUN an existing container:
-$ sudo docker start -ai 8aa07c50e260          // provide either container_id or name of the container
-$ sudo docker start 8aa07c50e260
+==> To STOP/KILL a running container:
+$ docker stop dd5673adf044              // provide either container_id or name of the container
+$ docker stop $(docker ps -aq)      // gracefully stop all running containers
+$ docker kill $(docker ps -aq)      // stop all running containers
 
 
-==> To STOP a running container:
-$ sudo docker stop dd5673adf044           // provide either container_id or name of the container
-
-
-==> To DELETE a container:
-$ sudo docker rm dd5673adf044           // provide either container_id or name of the container
+==> To DELETE/REMOVE a container:
+$ docker rm dd5673adf044                 // provide either container_id or name of the container
+$ docker rm -f $(docker ps -aq)      // remove all containers 
 
 
 ==> To execute a command in container while starting it:
-$ sudo docker run ubuntu sleep 10
+$ docker run ubuntu sleep 10
 
 
 ==> To execute a command in a running container:
-$ sudo docker exec -it mycontainer ls /etc           // mycontainer is the container name, -t is pseudo terminal
+$ docker exec -it mycontainer ls /etc           // mycontainer is the container name, -t is pseudo terminal
 
 
 ==> To get all the details of a container:
-$ sudo docker inspect 5390f465862b
+$ docker inspect 5390f465862b
 
 
 ==> To find internal IP address of a container:
-$ sudo docker inspect -f '{{ .NetworkSettings.IPAddress }}' 0a626ce14db4
+$ docker inspect -f '{{ .NetworkSettings.IPAddress }}' 0a626ce14db4
 
 
 ==> To see the logs of a container:
-$ sudo docker logs a1f0ba759d32
+$ docker logs a1f0ba759d32
