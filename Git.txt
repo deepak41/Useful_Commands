@@ -80,6 +80,7 @@ $ git branch
 
 ==> To create a new local branch(named messi):
 $ git branch messi
+$ git checkout -b messi
 
 
 ==> To delete a local branch(messi):
@@ -136,3 +137,43 @@ $ git merge messi
 ==> To merge the remote branch messi into the current local branch:
 $ git fetch figo
 $ git pull figo messi     (pull = fetch + merge)
+
+
+************************************
+		STASH
+************************************
+
+==> To get the list of stash:
+$ git stash list
+
+==> To create a stash:
+$ git stash
+
+==> To apply a stash:
+$ git stash pop
+
+==> To create a stash with name:
+$ git stash push -m "my_stash"
+
+==> To apply a stash and keep it in the stash stack:
+$ git stash apply stash@{n}
+
+==> To delete a stash:
+$ git stash drop stash@{n}
+
+******************************************
+******************************************
+
+
+
+# Rules when working:
+
+==> Always cut branch from staging
+$ git checkout -b branch-name
+
+==> work on your branch. periodically merge origin staging
+$ git fetch
+$ git merge origin/staging
+
+if any conflicts, resolve it
+always merge staging 2-3 days
