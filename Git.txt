@@ -134,9 +134,8 @@ $ git merge messi
 ************************************
 *********************************
 
-==> To merge the remote branch messi into the current local branch:
-$ git fetch figo
-$ git pull figo messi     (pull = fetch + merge)
+==> To merge the remote branch branch1 into the current local branch:
+$ git pull origin branch1     (pull = fetch + merge)
 
 
 ************************************
@@ -149,27 +148,46 @@ $ git stash list
 ==> To create a stash:
 $ git stash
 
-==> To apply a stash:
-$ git stash pop
+==> To CREATE a stash with a name:
+$ git stash push -m 'stash_name'
 
-==> To create a stash with name:
-$ git stash push -m "my_stash"
 
-==> To apply a stash and keep it in the stash stack:
+==> To APPLY a stash WITHOUT DELETING it:
 $ git stash apply stash@{n}
 
-==> To delete a stash:
+==> To apply a stash (this DELETES the stash from stack):
+$ git stash pop
+
+==> To DELETE a stash:
 $ git stash drop stash@{n}
 
+==> To stash a single file:
+$ git stash push -m stash_name app/views/cart/welcome.html
+
 ******************************************
 ******************************************
 
+
+
+
+************************************
+		CHERRY PICK
+************************************
+
+
+to do
+$ git cherry-pick a6ce27d   //commit-id
+
+
+
+******************************************
+******************************************
 
 
 # Rules when working:
 
 ==> Always cut branch from staging
-$ git checkout -b branch-name
+$ git checkout -b branch_name
 
 ==> work on your branch. periodically merge origin staging
 $ git fetch
