@@ -30,18 +30,23 @@ $ echo "" > hello.txt
 $ cp /dev/null hello.txt
 
 
+
+
 /***************************************************************/
-==> To see memory consumed by a process running on a port(e.g 3000):
-$ top -p `sudo lsof -t -i:3000`
-$ htop -p `sudo lsof -t -i:3000`
-
-
-==> To kill a procees running on a port(e.g 3000):
-$ sudo kill -9 `sudo lsof -t -i:3000`
-
-
-==> To list the process running on a port(e.g 3000):
+                     PROCESS
+/***************************************************************/
+==> To LIST the process running on a port(e.g 3000):
 $ sudo lsof -i :3000
+
+
+==> To KILL a procees running on a port(e.g 3000):
+$ sudo kill -9 `sudo lsof -ti :3000`
+
+
+==> To see memory consumed by a process running on a port(e.g 3000):
+$ top -p `sudo lsof -ti :3000`
+$ htop -p `sudo lsof -ti :3000`
+
 
 ==> To kill a process with PID(process ID) 1448
 $ kill -9 1448
@@ -51,6 +56,8 @@ $ ps -aux | less     (for exit: ctrl+z)
 $ top 
 
 /***************************************************************/
+
+
 
 
 ==> To install zip unzip
@@ -103,7 +110,7 @@ $ rm -r mydir
 $ cp /var/test.zip /var/www/songs/
 
 ==> To copy a folder named songs
-$ cp -R songs/ /var/www/songs/
+$ cp -a songs/ /var/www/songs/
 
 ==> to copy the contents of the folder folder1 to folder2
 $ cp -r ~/folder1/. ~/folder2
