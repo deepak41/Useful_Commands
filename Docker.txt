@@ -3,11 +3,13 @@ $ sudo apt install docker.io
 
 
 ==> To find the version of docker:
-$ sudo docker version
+$ docker version
+$ docker -v
 
 
 ==> To avoid using sudo in all commands:
-$ sudo chmod 777 /var/run/docker.sock
+$ sudo usermod -aG docker ${USER}
+$ su - ${USER}
 
 
 

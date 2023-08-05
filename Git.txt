@@ -23,6 +23,10 @@ $ git config --global push.default matching
 
 ==> To make a folder a git repo, go to that folder and:
 $ git init
+$ git add -A .
+$ git commit -m "first commit"
+$ git remote add origin git@github.com:deepak41/repo-name.git
+$ git push -u origin master
 
 
 ==> To download a online git repo:
