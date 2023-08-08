@@ -1,5 +1,11 @@
 zipalign -f -v 4 thingsai.apk outfile.apk
 
+==> Find ubuntu version:
+$ lsb_release -a
+
+==> Find kernel version:
+$ uname -r
+
 ==> To shutdown the computer:
 $ sudo poweroff
 $ sudo poweroff -f
@@ -52,7 +58,7 @@ $ htop -p `sudo lsof -ti :3000`
 $ kill -9 1448
 
 ==> To see the list of all the running processes:
-$ ps -aux | less     (for exit: ctrl+z)
+$ ps -aux | less     (for exit: ctrl+c)
 $ top 
 
 /***************************************************************/
