@@ -3,19 +3,31 @@ zipalign -f -v 4 thingsai.apk outfile.apk
 ==> Find ubuntu version:
 $ lsb_release -a
 
+
 ==> Find kernel version:
 $ uname -r
+$ uname -srn
+
 
 ==> To shutdown the computer:
 $ sudo poweroff
 $ sudo poweroff -f
 
+
 ==> To restart the computer:
 $ sudo reboot
+
 
 ==> To find ip address of my pc
 $ hostname -I
 $ ifconfig | grep inet
+
+
+==> To search terminal history for commands used before:
+Press Ctrl+R and start typing the command. 
+Press Ctrl+R again and again until you find the match.
+Once you've found the match you can press Enter to execute the command 
+or left / right arrow to just select the text of the command.
 
 
 /***************************************************************/
@@ -41,6 +53,10 @@ $ cp /dev/null hello.txt
 /***************************************************************/
                      PROCESS
 /***************************************************************/
+
+==> To check any background process running:
+$ fg
+
 ==> To LIST the process running on a port(e.g 3000):
 $ sudo lsof -i :3000
 
