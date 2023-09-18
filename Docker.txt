@@ -8,8 +8,9 @@ $ docker -v
 
 
 ==> To avoid using sudo in all commands:
-$ sudo usermod -aG docker ${USER}
-$ su - ${USER}
+$ sudo addgroup docker                      // create a user group called docker
+$ sudo usermod -aG docker ${USER}           // add the current user in the docker group
+$ su - ${USER}                              // make user sudo enabled
 
 
 
@@ -46,7 +47,8 @@ $ docker container ls -a
 
 ==> To START/RUN a container from an image (e.g. image name = nginx):
 $ docker run --name mycontainer nginx              // this will first pull the image if not present locally
-$ docker run -p 45045:8080 -d deepak661/nodejs-app
+$ docker run -d -p 45045:8080 deepak661/nodejs-app
+$ docker run -d -p 6379:6379 --name my-redis-container redis
 
 
 ==> To START/RUN an existing container:
@@ -65,24 +67,26 @@ $ docker kill $(docker ps -aq)      // stop all running containers
 
 
 ==> To DELETE/REMOVE a container:
-$ docker rm dd5673adf044                 // provide either container_id or name of the container
-$ docker rm -f $(docker ps -aq)      // remove all containers 
+$ docker rm dd5673adf044                    // provide either container_id or name of the container
+$ docker rm -f $(docker ps -aq)             // remove all containers 
 
 
 ==> To execute a command in container while starting it:
 $ docker run ubuntu sleep 10
 
 
-==> To execute a command in a running container:
-$ docker exec -it mycontainer ls /etc           // mycontainer is the container name, -t is pseudo terminal
+==> To start a shell inside a container to execute commands:
+$ docker exec -it mycontainer sh                // this will run the sh shell in the specified container, giving you a basic shell prompt (-t is pseudo terminal)
+$ docker exec -it mycontainer bash              // for bash shell (type and enter 'exit' for exiting)
 
 
 ==> To get all the details of a container:
 $ docker inspect 5390f465862b
 
 
-==> To find internal IP address of a container:
+==> To find internal IP address and port of a container:
 $ docker inspect -f '{{ .NetworkSettings.IPAddress }}' 0a626ce14db4
+$ docker inspect -f '{{ .NetworkSettings.Ports }}' ee057cb304d1
 
 
 ==> To see the logs of a container:

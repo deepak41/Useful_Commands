@@ -17,9 +17,9 @@ $ git config --global push.default matching
 
 
 
-*********************************
-       INITITIALIZE
-*********************************
+*************************************************
+       INITITIALIZE A NEW GIT REPO
+*************************************************
 
 ==> To make a folder a git repo, go to that folder and:
 $ git init

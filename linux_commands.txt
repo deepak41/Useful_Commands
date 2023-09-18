@@ -13,6 +13,12 @@ $ uname -srn
 $ sudo poweroff
 $ sudo poweroff -f
 
+==> To schedule a shutdown of the computer:
+$ sudo shutdown -P +35        // shutdown in 35 minutes
+$ sudo shutdown 7:50          // shutdown at 7:50 AM
+$ sudo shutdown -c            // Cancel a scheduled pending shutdown
+$ date -d @`cat /run/systemd/shutdown/scheduled | head -n 1 | cut -c6-15`      //To check if shutdown schedule is active
+
 
 ==> To restart the computer:
 $ sudo reboot
