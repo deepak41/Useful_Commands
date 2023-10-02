@@ -71,13 +71,14 @@ $ sudo lsof -i :3000
 $ sudo kill -9 `sudo lsof -ti :3000`
 
 
+==> To KILL a process with PID(process ID) (e.g 1448):
+$ kill -9 1448
+
+
 ==> To see memory consumed by a process running on a port(e.g 3000):
 $ top -p `sudo lsof -ti :3000`
 $ htop -p `sudo lsof -ti :3000`
 
-
-==> To kill a process with PID(process ID) 1448
-$ kill -9 1448
 
 ==> To see the list of all the running processes:
 $ ps -aux | less     (for exit: ctrl+c)
