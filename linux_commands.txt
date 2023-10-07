@@ -10,8 +10,8 @@ $ uname -srn
 
 
 ==> To shutdown the computer:
-$ sudo poweroff
-$ sudo poweroff -f
+$ poweroff
+$ poweroff -f
 
 ==> To schedule a shutdown of the computer:
 $ sudo shutdown -P +35        // shutdown in 35 minutes
@@ -21,10 +21,10 @@ $ date -d @`cat /run/systemd/shutdown/scheduled | head -n 1 | cut -c6-15`      /
 
 
 ==> To restart the computer:
-$ sudo reboot
+$ reboot
 
 
-==> To find ip address of my pc
+==> To find ip address of my pc:
 $ hostname -I
 $ ifconfig | grep inet
 
@@ -47,11 +47,6 @@ $ ./test				//run
 /***************************************************************/
 
 
-/***************************************************************/
-
-==> To EMPTY the file hello.txt
-$ echo "" > hello.txt
-$ cp /dev/null hello.txt
 
 
 
@@ -98,6 +93,8 @@ $ zip -r compressed_filename.zip foldername
 
 
 
+
+
 /******************************************/
 			      SCP
 /******************************************/
@@ -108,12 +105,14 @@ commands can be entered in local machine or cloud server
 
 ==> to copy a file to remote server(command)
 $ scp test.zip root@202.33.58.47:/My_contents
+
 // The system into which file is copied can only be cloud server (not local machine).
 $ scp -i "UM1.pem" ~/My_files/gulptest.zip ubuntu@ec2-13-233-184-78.ap-south-1.compute.amazonaws.com:~/projects
 
 
 ==> to copy a file from a remote server to local machine
 $ scp root@139.59.80.248:/My_contents/test.zip ~/MY_CONTENTS
+
 // The system from which file is copied can only be cloud server (not local machine).
 $ scp -i "UM1.pem" ubuntu@ec2-13-127-50-91.ap-south-1.compute.amazonaws.com:~/thingsioportal.zip ~/My_files
 
@@ -122,31 +121,42 @@ $ scp -i "UM1.pem" ubuntu@ec2-13-127-50-91.ap-south-1.compute.amazonaws.com:~/th
 
 
 
+
+/******************************************/
+				FILES
+/******************************************/
+
+==> To EMPTY the file hello.txt:
+$ echo "" > hello.txt
+$ cp /dev/null hello.txt
+
+/*************************************************************************************/
+
+
+
+
+
 /******************************************/
 			FOLDERS / DIRECTORIES
 /******************************************/
 
-==> To move all the contents of the current folder to the folder /home/deepak/xyz
-$ mv * /home/deepak/xyz    (to copy replace mv with cp)
+==> To move all the contents of the current folder to the folder /home/deepak/songs:
+$ mv * /home/deepak/songs    (to copy replace mv with cp)
 
 ==> rename a folder
 $ mv oldname newname
 
-==> To delete a folder called mydir
-$ rm -r mydir
+==> To copy a file to a folder:
+$ cp test.mp3 /var/www/songs
 
-==> To copy a file to a folder
-$ cp /var/test.zip /var/www/songs/
+==> To copy a folder named songs:
+$ cp -a songs /var/www/songs			// we can use any name for destination folder e.g /var/www/songs2
 
-==> To copy a folder named songs
-$ cp -a songs/ /var/www/songs/
+==> To delete a folder called songs:
+$ rm -r songs
 
-==> to copy the contents of the folder folder1 to folder2
-$ cp -r ~/folder1/. ~/folder2
-
-
-==> to delete all the contents of the folder named cars
-$ rm -rf cars/*
+==> to delete all the contents of the folder named songs:
+$ rm -rf songs/*
 
 
 /*************************************************************************************/
