@@ -36,6 +36,35 @@ Once you've found the match you can press Enter to execute the command
 or left / right arrow to just select the text of the command.
 
 
+
+==> To see the currently logged-in user:
+$ whoami
+
+
+==> To change hostname:
+$ sudo nano /etc/hostname
+$ sudo nano /etc/hosts
+$ sudo reboot
+
+
+
+
+/***************************************************************/
+                         SSH
+/***************************************************************/
+
+==> To keep the SSH sessions from freezing, make these configuration changes on your laptop:
+$ sudo nano /etc/ssh/ssh_config
+
+And add these lines:
+Host *
+ServerAliveInterval 100
+
+/***************************************************************/
+
+
+
+
 /***************************************************************/
 /***************************************************************/
 
@@ -45,8 +74,6 @@ $ ./test				//run
 
 /***************************************************************/
 /***************************************************************/
-
-
 
 
 
@@ -167,3 +194,16 @@ $ rm -rf songs/*
 $ sudo tail -f /var/log/apache2/error.log
 
 /*************************************************************************************/
+
+
+
+
+/******************************************/
+               ls command
+/******************************************/
+
+==> To see all the contents of a folder
+$ ls -a
+
+==> To see all the contents of a folder in list:
+$ ls -l

@@ -199,3 +199,27 @@ $ git merge origin/staging
 
 if any conflicts, resolve it
 always merge staging 2-3 days
+
+
+
+
+************************************
+          SSH Keys
+************************************
+==> To create ssh keys and add it in github:
+
+(+) Login into cloud server or laptop and:  
+$ cd ~/.ssh
+
+(+) To create ssh keys:
+$ ssh-keygen
+OR
+$ ssh-keygen -t rsa -b 4096 -C "ks.deepak07@gmail.com"
+
+(+) Copy the public SSH key:
+$cat id_rsa.pub
+
+(+) Go to github settings:
+https://github.com/settings/keys
+
+(+) Click 'New SSH key' and add the key.

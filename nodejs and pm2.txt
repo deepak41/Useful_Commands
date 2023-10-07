@@ -66,3 +66,8 @@ $ sudo pm2 start index.js -i max          //this will create processes equal to 
 
 ==> To set the number of running processes in cluster mode:
 $ sudo pm2 scale index 3             // after this, only 3 processes will be running
+
+
+==> To create symbolic links:
+$ which node
+$ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node

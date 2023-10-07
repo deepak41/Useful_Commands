@@ -1,0 +1,10 @@
+sudo ssh $USERNAME@localhost -L 80:localhost:5000 -N
+
+ssh encs_username@reachable_IP -N -f -L local_port:remote_IP:remote_port
+
+ssh userfoo@tunnel.encs.concordia.ca -N -f -L 4040:remote_host.encs.concordia.ca:5050
+
+http://13.233.146.185/
+
+
+ssh $USERNAME@localhost -N -f -L 80:localhost:5000
