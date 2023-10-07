@@ -96,7 +96,7 @@ $ zip -r compressed_filename.zip foldername
 
 
 /******************************************/
-			      SCP
+                 SCP
 /******************************************/
 
 
@@ -137,7 +137,7 @@ $ cp /dev/null hello.txt
 
 
 /******************************************/
-			FOLDERS / DIRECTORIES
+         FOLDERS / DIRECTORIES
 /******************************************/
 
 ==> To move all the contents of the current folder to the folder /home/deepak/songs:
