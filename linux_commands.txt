@@ -123,7 +123,7 @@ $ scp -i "UM1.pem" ubuntu@ec2-13-127-50-91.ap-south-1.compute.amazonaws.com:~/th
 
 
 /******************************************/
-				FILES
+                FILES
 /******************************************/
 
 ==> To EMPTY the file hello.txt:
