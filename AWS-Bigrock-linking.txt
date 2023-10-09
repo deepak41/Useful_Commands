@@ -1,0 +1,10 @@
+(>) Go to 'Route 53' in AWS.
+(>) Go to Hosted Zones.
+(>) Click Create hosted zone.
+(>) Provide your domain name and click ok. Hosted Zone will be created.
+(>) Open hosted zone and copy the 4 name servers.(e.g. ns-730.awsdns-27.net)
+	Go to your domain name in Bigrock and paste those 4 name servers from AWS.
+(>) Create an A RECORD for domain name in 'Route 53'. 
+	Provide sub-domain(e.g. chat) and IP address of ec2 server. 
+	Click Save Record. A RECORD will be created.
+

@@ -10,7 +10,7 @@ $ docker -v
 ==> To avoid using sudo in all commands:
 $ sudo addgroup docker                      // create a user group called docker
 $ sudo usermod -aG docker ${USER}           // add the current user in the docker group
-$ su - ${USER}                              // make user sudo enabled
+Then, logout and login again.
 
 
 

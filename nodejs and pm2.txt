@@ -15,59 +15,69 @@ $ npm init -y
 $ sudo chown -R $USER:$USER ~
 
 
-************************************************************************************
-									PM2
-************************************************************************************
-
-==> Production PM2:
-$ sudo npm install pm2 -g
-$ sudo pm2 start index.js
-
-
-==> To get the list of all running processes:
-$ sudo pm2 list
-
-
-==> To START a project/process (Go to root folder of node app):
-$ sudo pm2 start index.js
-$ sudo pm2 start index.js --name myapp
-
-
-==> To RESTART a project/process:
-$ sudo pm2 restart index
-$ sudo pm2 reload index
-
-
-==> To see the details of a process:
-$ sudo pm2 show 1             // Here, process id is 1. We can use Name also
-OR
-$ sudo pm2 describe 1
-
-
-==> To STOP a process (Go to root folder of node app):
-$ sudo pm2 stop index.js
-
-
-==> To STOP all processes:
-$ sudo pm2 stop all      
-
-
-==> To DELETE a process:
-$ sudo pm2 delete index.js
-OR
-$ sudo pm2 delete 1                // if process id is 1
-OR
-$ sudo pm2 delete all             // this will delete all processes
-
-
-==> To start a project in CLUSTER MODE:
-$ sudo pm2 start index.js -i max          //this will create processes equal to CPUs available in the machine 
-
-
-==> To set the number of running processes in cluster mode:
-$ sudo pm2 scale index 3             // after this, only 3 processes will be running
-
-
 ==> To create symbolic links:
 $ which node
 $ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node
+
+
+
+
+
+/************************************************************************************/
+                                  PM2
+/************************************************************************************/
+
+
+==> To get the list of all running processes:
+$ pm2 list
+
+
+==> To START a project/process (Go to root folder of node app):
+$ pm2 start index.js
+$ pm2 start index.js --name app-name
+$ pm2 start npm --name "app-name" -- run dev
+
+
+==> To RESTART a project/process:
+$ pm2 restart index
+$ pm2 reload index
+
+
+==> To DELETE a process:
+$ pm2 delete index.js
+OR
+$ pm2 delete 1                // if process id is 1
+OR
+$ pm2 delete all             // this will delete all processes
+
+
+==> To see the details of a process:
+$ pm2 show 1             // Here, process id is 1. We can use Name also
+OR
+$ pm2 describe 1
+
+
+==> To STOP a process (Go to root folder of node app):
+$ pm2 stop index.js
+
+
+==> To STOP all processes:
+$ pm2 stop all      
+
+
+
+
+/*****************************************************/
+                PM2 CLUSTER
+/*****************************************************/
+
+==> To start a project in CLUSTER MODE:
+$ pm2 start index.js -i max				// this will create processes equal to total CPUs available in the machine 
+$ pm2 start index.js -i -1					// this will create processes equal to total CPUs -1 	
+$ pm2 start index.js -i 3					// this will create 3 processes		
+
+
+==> To set the number of running processes in cluster mode:
+$ pm2 scale index 3             // after this, only 3 processes will be running
+
+/************************************************************************************/

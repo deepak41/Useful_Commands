@@ -47,6 +47,11 @@ $ sudo nano /etc/hosts
 $ sudo reboot
 
 
+==> To create symbolic links:
+$ which node                    // gives the path of node
+$ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node
+
+
 
 
 /***************************************************************/
@@ -205,5 +210,8 @@ $ sudo tail -f /var/log/apache2/error.log
 ==> To see all the contents of a folder
 $ ls -a
 
-==> To see all the contents of a folder in list:
+==> To see all the contents of a folder in list form:
 $ ls -l
+
+/*************************************************************************************/
+
