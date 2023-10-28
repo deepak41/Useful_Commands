@@ -22,6 +22,10 @@ $ mongo
 
 /**************************************************************************************************/
 
+==> To open up the MongoDB shell:
+mongo
+mongosh
+
 
 ==> To find the version of mongodb:
 $ db.version()

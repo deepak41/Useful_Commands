@@ -95,6 +95,7 @@ $ sudo lsof -i :3000
 
 
 ==> To KILL a procees running on a port(e.g 3000):
+$ kill -9 `lsof -ti :3000`
 $ sudo kill -9 `sudo lsof -ti :3000`
 
 

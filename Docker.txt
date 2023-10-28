@@ -45,7 +45,7 @@ $ docker ps -a
 $ docker container ls -a
 
 
-==> To START/RUN a container from an image (e.g. image name = nginx):
+==> To START/RUN(create ?) a container from an image (e.g. image name = nginx):
 $ docker run --name mycontainer nginx              // this will first pull the image if not present locally
 $ docker run -d -p 45045:8080 deepak661/nodejs-app
 $ docker run -d -p 6379:6379 --name my-redis-container redis
@@ -76,8 +76,8 @@ $ docker run ubuntu sleep 10
 
 
 ==> To start a shell inside a container to execute commands:
-$ docker exec -it mycontainer sh                // this will run the sh shell in the specified container, giving you a basic shell prompt (-t is pseudo terminal)
-$ docker exec -it mycontainer bash              // for bash shell (type and enter 'exit' for exiting)
+$ docker exec -it mycontainer bash                  // this will run the sh shell in the specified container, giving you a basic shell prompt (-t is pseudo terminal)
+$ docker exec -it mycontainer sh                    // for sh shell (type and enter 'exit' for exiting)
 
 
 ==> To get all the details of a container:
@@ -91,3 +91,35 @@ $ docker inspect -f '{{ .NetworkSettings.Ports }}' ee057cb304d1
 
 ==> To see the logs of a container:
 $ docker logs a1f0ba759d32
+
+
+
+
+
+
+
+***************************************************************************************************
+                                        docker-compose
+***************************************************************************************************
+
+links: 
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
+https://www.conduktor.io/kafka/how-to-start-kafka-using-docker/
+localhost:9092
+
+
+
+==> To install docker-compose:
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+
+
+==> To find docker compose version:
+$ docker-compose -v
+$ docker compose version
+
+
+==> to run a an .yml file:
+$ docker-compose -f zk-single-kafka-single.yml up -d
+

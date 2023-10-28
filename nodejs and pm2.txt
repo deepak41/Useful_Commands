@@ -20,7 +20,14 @@ $ which node
 $ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node
 
 
+/************************************************************************************/
 
+
+==> To find the type/class of a variable:
+console.log(Object.prototype.toString.call(x))
+
+==> To get the list of exported objects of a module:
+console.log(Object.keys(require("http")));
 
 
 /************************************************************************************/
