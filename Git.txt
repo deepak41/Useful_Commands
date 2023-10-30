@@ -224,3 +224,4 @@ Copy the output.
 https://github.com/settings/keys
 
 # Click 'New SSH key' and paste the contents of id_rsa.pub.
+******************************************************************************
