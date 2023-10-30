@@ -206,7 +206,7 @@ always merge staging 2-3 days
 ************************************
           SSH Keys
 ************************************
-==> To create ssh keys and add it in github:
+==> To create ssh keys and add it in GitHub:
 
 # Login into cloud server or laptop and:  
 $ cd ~/.ssh
