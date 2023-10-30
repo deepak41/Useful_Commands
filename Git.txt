@@ -4,8 +4,8 @@ $ git --version
 
 
 ==>  After installing git, the first thing to do:
-$ git config --global user.name "Your Name"
-$ git config --global user.email "you@example.com"
+git config --global user.name "Deepak Kumar Singh"
+git config --global user.email "ks.deepak07@gmail.com"
 
 
 ==> To see the user.name or user.email:
