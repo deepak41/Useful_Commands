@@ -25,8 +25,8 @@ $ docker images
 $ docker image ls
 
 
-==> To download an image:
-$ docker pull hello-docker
+==> To download an image (called hello-world):
+$ docker pull hello-world
 
 
 ==> To DELETE an image:
@@ -45,21 +45,18 @@ $ docker ps -a
 $ docker container ls -a
 
 
-==> To START/RUN(create ?) a container from an image (e.g. image name = nginx):
-$ docker run --name mycontainer nginx              // this will first pull the image if not present locally
-$ docker run -d -p 45045:8080 deepak661/nodejs-app
-$ docker run -d -p 6379:6379 --name my-redis-container redis
+==> To CREATE a new container from an image (e.g. image name = mongo):
+$ docker run -p 45045:27017 --name mongo7 -d mongo          
+// this will first pull the image if not present locally. 
+// 45045 is the externel port. (curl -i localhost:45045)
+// -d flag will run the container in detached mode
 
 
 ==> To START/RUN an existing container:
-$ docker start -ai 8aa07c50e260          // provide either container_id or name of the container
 $ docker start 8aa07c50e260
+$ docker start -ai 8aa07c50e260          // provide either container_id or name of the container
 
 
-==> To START/RUN a container in detached mode (this runs a web server in background and we will back to the prompt):
-$ docker run -d kodekloud/simple-webapp
-
-          
 ==> To STOP/KILL a running container:
 $ docker stop dd5673adf044              // provide either container_id or name of the container
 $ docker stop $(docker ps -aq)      // gracefully stop all running containers
@@ -71,13 +68,13 @@ $ docker rm dd5673adf044                    // provide either container_id or na
 $ docker rm -f $(docker ps -aq)             // remove all containers 
 
 
-==> To execute a command in container while starting it:
-$ docker run ubuntu sleep 10
-
-
 ==> To start a shell inside a container to execute commands:
 $ docker exec -it mycontainer bash                  // this will run the sh shell in the specified container, giving you a basic shell prompt (-t is pseudo terminal)
 $ docker exec -it mycontainer sh                    // for sh shell (type and enter 'exit' for exiting)
+
+
+==> To execute a command in container while starting it:
+$ docker run ubuntu sleep 10
 
 
 ==> To get all the details of a container:
@@ -111,8 +108,7 @@ localhost:9092
 
 ==> To install docker-compose:
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
-sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
-sudo chmod +x /usr/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 
 ==> To find docker compose version:

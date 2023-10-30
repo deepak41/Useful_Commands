@@ -8,6 +8,8 @@ $ lsb_release -a
 $ uname -r
 $ uname -srn
 
+==> To install a kernel version:
+https://linux.how2shout.com/how-to-change-default-kernel-in-ubuntu-22-04-20-04-lts/
 
 ==> To shutdown the computer:
 $ poweroff
