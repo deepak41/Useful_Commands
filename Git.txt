@@ -208,18 +208,19 @@ always merge staging 2-3 days
 ************************************
 ==> To create ssh keys and add it in github:
 
-(+) Login into cloud server or laptop and:  
+# Login into cloud server or laptop and:  
 $ cd ~/.ssh
 
-(+) To create ssh keys:
+# To create ssh keys:
 $ ssh-keygen
 OR
 $ ssh-keygen -t rsa -b 4096 -C "ks.deepak07@gmail.com"
 
-(+) Copy the public SSH key:
-$cat id_rsa.pub
+# Copy the public SSH key:
+$ cat id_rsa.pub
+Copy the output.
 
-(+) Go to github settings:
+# Go to github settings:
 https://github.com/settings/keys
 
-(+) Click 'New SSH key' and add the key.
+# Click 'New SSH key' and paste the contents of id_rsa.pub.
