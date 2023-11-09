@@ -68,7 +68,7 @@ $ docker rm dd5673adf044                    // provide either container_id or na
 $ docker rm -f $(docker ps -aq)             // remove all containers 
 
 
-==> To start a shell inside a container to execute commands:
+==> To start a SHELL inside a container to execute commands:
 $ docker exec -it mycontainer bash                  // this will run the sh shell in the specified container, giving you a basic shell prompt (-t is pseudo terminal)
 $ docker exec -it mycontainer sh                    // for sh shell (type and enter 'exit' for exiting)
 
