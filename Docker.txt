@@ -53,8 +53,8 @@ $ docker run -p 45045:27017 --name mongo7 -d mongo
 
 
 ==> To START/RUN an existing container:
-$ docker start 8aa07c50e260
-$ docker start -ai 8aa07c50e260          // provide either container_id or name of the container
+$ docker start container_name
+$ docker start -ai container_name          // provide either container_id or name of the container
 
 
 ==> To STOP/KILL a running container:

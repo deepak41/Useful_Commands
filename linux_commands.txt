@@ -218,3 +218,17 @@ $ ls -l
 
 /*************************************************************************************/
 
+
+
+
+/*************************************************************************************/
+                                  change default grub
+/*************************************************************************************/
+# Make a backup copy of grub file:
+$ sudo cp /etc/default/grub /etc/default/grub.bak
+
+# Open the file:
+$ sudo -H gedit /etc/default/grub
+
+# Set the value of GRUB_DEFAULT(0 means first entry):
+GRUB_DEFAULT="1>7"

@@ -2,40 +2,43 @@
 						INSTALL
 /**********************************************************************************************/
 
-===> Steps
+==> To install mongo using docker:
+$ docker run --name mongo_example -d mongo
 
-$ curl -fsSL https://www.mongodb.org/static/pgp/server-3.6.asc | sudo apt-key add -
 
-$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+==> To run an already existing mongo container:
+$ docker start mongo_example
 
-$ sudo apt update
-
-$ sudo apt install mongodb-org
-
-$ sudo systemctl start mongod
-
-$ sudo systemctl status mongod
-
-$ sudo systemctl enable mongod
-
-$ mongo
 
 /**************************************************************************************************/
 
 ==> To open up the MongoDB shell:
-mongo
-mongosh
+$ docker exec -it mongo_example bash
+# mongosh
 
 
 ==> To find the version of mongodb:
-$ db.version()
+>>> db.version()
 
 
+
+/**********************************************************************************************/
+						Dump and RESTORE
+/**********************************************************************************************/
 ==> To make a copy(dump) all the data of all dbs:
-$ mongodump			 //you should be inside the folder in which you want dump
+$ mongodump -o db-dump
 
 ==> To restore data in the db(myfirstbackup is the dump folder):
 $ mongorestore myfirstbackup 
+
+==> To copy the dump to the host machine:
+$ cd ~/my_files/mongo-backup
+$ docker cp mongo7:/my_files/dump .
+
+
+
+/**********************************************************************************************/
+
 
 
 
