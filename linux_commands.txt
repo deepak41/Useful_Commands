@@ -185,7 +185,7 @@ $ mv oldname newname
 $ cp test.mp3 /var/www/songs
 
 ==> To copy a folder named songs:
-$ cp -a songs /var/www/songs			// we can use any name for destination folder e.g /var/www/songs2
+$ cp -av songs /var/www/songs			// we can use any name for destination folder e.g /var/www/songs2
 
 ==> To delete a folder called songs:
 $ rm -r songs

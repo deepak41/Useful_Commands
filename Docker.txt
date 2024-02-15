@@ -3,8 +3,8 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 
 ==> To find the version of docker:
-$ docker version
 $ docker -v
+$ docker version
 
 
 ==> To avoid using sudo in all commands:
@@ -19,6 +19,12 @@ Then, logout and login again.
 # cat /etc/timezone
 # date
 
+
+==> to show docker disk usage:
+$ docker system df --verbose
+
+==> To get size of container:
+$ docker ps -s
 
 
 
@@ -127,5 +133,5 @@ $ docker-compose -v
 $ docker compose version
 
 
-==> to run a an .yml file:
+==> To run a .yml file:
 $ docker-compose -f test.yml up -d
