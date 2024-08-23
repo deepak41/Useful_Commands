@@ -81,7 +81,7 @@ $ docker kill $(docker ps -aq)      // stop all running containers
 
 
 ==> To DELETE/REMOVE a container:
-$ docker rm dd5673adf044                    // provide either container_id or name of the container
+$ docker rm -f dd5673adf044                    // provide either container_id or name of the container
 $ docker rm -f $(docker ps -aq)             // remove all containers 
 
 

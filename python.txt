@@ -1,0 +1,21 @@
+==> Make symlink of python3:
+$ sudo ln -s /usr/bin/python3 /sbin/python
+
+
+==> Install pip3:
+$ sudo apt install python3-pip -y
+
+
+==> install and create virtual environment:
+$ sudo apt install python3-venv -y
+$ python -m venv algotrenv
+$ source algotrenv/bin/activate
+$ deactivate
+
+
+==> To add pacakges list to requirements.txt:
+$ pip freeze > requirements.txt
+
+
+==> To install from requirements.txt:
+$ pip install -r requirements.txt

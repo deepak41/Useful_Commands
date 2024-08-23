@@ -16,6 +16,10 @@ $ git config user.email
 $ git config --global push.default matching
 
 
+==> Force push after deleting a commit:
+git push origin -f
+
+
 
 *************************************************
        INITITIALIZE A NEW GIT REPO
@@ -44,8 +48,8 @@ $ git remote -v
 $ git remote add <name> <url>
 
 
-==> To remove a remote repo for the local repo:
-$ git remote rm <name>
+==> To remove a remote repo (e.g. origin) for the local repo:
+$ git remote rm origin
 
 
 
@@ -82,9 +86,9 @@ git commit -m ".gitignore is now working"
 $ git branch
 
 
-==> To create a new local branch(named messi):
+==> To create a new local branch(named messi) from the current branch:
 $ git branch messi
-$ git checkout -b messi
+$ git checkout -b messi        // this command creates and switches to new branch
 
 
 ==> To delete a local branch(messi):
@@ -149,18 +153,20 @@ $ git pull origin branch1     (pull = fetch + merge)
 ==> To get the list of stash:
 $ git stash list
 
-==> To create a stash:
+==> To CREATE a stash:
 $ git stash
 
 ==> To CREATE a stash with a name:
 $ git stash push -m 'stash_name'
 
 
+==> To APPLY a stash (this DELETES the stash from stack):
+$ git stash pop
+
+
 ==> To APPLY a stash WITHOUT DELETING it:
 $ git stash apply stash@{n}
 
-==> To apply a stash (this DELETES the stash from stack):
-$ git stash pop
 
 ==> To DELETE a stash:
 $ git stash drop stash@{n}
@@ -212,7 +218,7 @@ always merge staging 2-3 days
 $ cd ~/.ssh
 
 # To create ssh keys:
-$ ssh-keygen
+$ ssh-keygen		// it will ask filename, passphrase, etc., just press enter multiple times
 OR
 $ ssh-keygen -t rsa -b 4096 -C "ks.deepak07@gmail.com"
 

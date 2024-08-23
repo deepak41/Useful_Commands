@@ -49,9 +49,20 @@ $ sudo nano /etc/hosts
 $ sudo reboot
 
 
-==> To create symbolic links:
+
+
+/***************************************************************/
+                         Symlinks
+/***************************************************************/
+
+==> To create symbolic links (Symlinks):
 $ which node                    // gives the path of node
 $ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node
+
+// for python:
+$ sudo ln -s /usr/bin/python3 /sbin/python
+
+/***************************************************************/
 
 
 
@@ -63,7 +74,7 @@ $ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node
 ==> To keep the SSH sessions from freezing, make these configuration changes on your laptop:
 $ sudo nano /etc/ssh/ssh_config
 
-And add these lines:
+And add these 2 lines:
 Host *
 ServerAliveInterval 100
 
@@ -192,6 +203,9 @@ $ rm -r songs
 
 ==> to delete all the contents of the folder named songs:
 $ rm -rf songs/*
+
+==> to create folders recursively
+$ mkdir -p temp/python-deploy/logs
 
 
 /*************************************************************************************/
