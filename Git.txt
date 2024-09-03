@@ -16,8 +16,7 @@ $ git config user.email
 $ git config --global push.default matching
 
 
-==> Force push after deleting a commit:
-git push origin -f
+
 
 
 
@@ -61,6 +60,14 @@ $ git remote rm origin
 $ git status
 $ git add -A .         // -A stands for all i.e created, deleted & modified
 $ git commit -m "some message"
+
+
+==> To delete last commit:
+$ git reset --hard HEAD~1
+
+
+==> Force push after deleting a commit:
+git push origin -f
 
 
 

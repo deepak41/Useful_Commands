@@ -246,3 +246,11 @@ $ sudo -H gedit /etc/default/grub
 
 # Set the value of GRUB_DEFAULT(0 means first entry):
 GRUB_DEFAULT="1>7"
+
+/*************************************************************************************/
+
+
+
+==> To download YouTube video:
+pip install yt-dlp --upgrade
+yt-dlp "https://www.youtube.com/watch?v=t5b20oLaIaw"

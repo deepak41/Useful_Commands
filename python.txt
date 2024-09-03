@@ -1,5 +1,6 @@
 ==> Make symlink of python3:
-$ sudo ln -s /usr/bin/python3 /sbin/python
+$ which python3
+$ sudo ln -s /usr/bin/python3 /usr/local/bin/python
 
 
 ==> Install pip3:
@@ -19,3 +20,8 @@ $ pip freeze > requirements.txt
 
 ==> To install from requirements.txt:
 $ pip install -r requirements.txt
+
+
+==> To convert jupyter notebook file to python file:
+jupyter nbconvert --to script test.ipynb
+
