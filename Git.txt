@@ -225,9 +225,8 @@ always merge staging 2-3 days
 $ cd ~/.ssh
 
 # To create ssh keys:
-$ ssh-keygen		// it will ask filename, passphrase, etc., just press enter multiple times
-OR
-$ ssh-keygen -t rsa -b 4096 -C "ks.deepak07@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "ks.deepak07@gmail.com"		// it will ask filename, passphrase, etc., just press enter multiple times
+
 
 # Copy the public SSH key:
 $ cat id_rsa.pub

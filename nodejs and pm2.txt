@@ -15,9 +15,11 @@ $ npm init -y
 $ sudo chown -R $USER:$USER ~
 
 
-==> To create symbolic links:
+==> To create symlinks:
 $ which node
-$ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /sbin/node
+$ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/node /usr/local/sbin/node
+$ sudo ln -s /home/ubuntu/.nvm/versions/node/v16.20.2/bin/nodemon /usr/local/sbin/nodemon
+
 
 
 /************************************************************************************/
