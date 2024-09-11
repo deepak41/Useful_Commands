@@ -4,7 +4,12 @@ $ sudo ln -s /usr/bin/python3 /usr/local/bin/python
 
 
 ==> Install pip3:
+$ sudo apt update
 $ sudo apt install python3-pip -y
+
+# if required:
+$ find /usr/lib -name EXTERNALLY-MANAGED
+$ sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.old
 
 
 ==> install and create virtual environment:
