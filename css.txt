@@ -1,3 +1,10 @@
+==> List of colors names used in styling:
+https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+https://www.w3.org/wiki/CSS/Properties/color/keywords
+
+
+
+
 :not()
 /* Selects any element that is NOT a paragraph */
 :not(p) {
